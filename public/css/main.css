@@ -1,0 +1,48 @@
+@import url(https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css);.card .dataTables_length label,
+.card .dataTables_filter label {
+  display: block;
+}
+.card .dataTables_length label .custom-select,
+.card .dataTables_filter label .custom-select,
+.card .dataTables_length label .form-control,
+.card .dataTables_filter label .form-control {
+  margin: 0 10px;
+  display: inline-block;
+  width: auto;
+}
+.card .card-footer nav {
+  display: inline-block;
+}
+.card .card-footer nav .pagination {
+  margin-bottom: 0;
+}
+.children-show .table td:first-of-type {
+  width: 40%;
+}
+.children-create .tooltip-form {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  width: 18px;
+  line-height: 18px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #222;
+  cursor: pointer;
+  text-align: center;
+}
+.alert p:last-of-type {
+  margin-bottom: 0;
+}
+.badge {
+  font-size: 16px;
+}
+.card-header h5 {
+  margin-bottom: 0;
+}
+table td {
+  vertical-align: middle !important;
+}
+.btn-cash-date .input-group-append {
+  background-color: #fff !important;
+}
