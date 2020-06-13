@@ -3,7 +3,7 @@
 @section('content')
     <div class="container children-index">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header"><h5>Анкеты <a href="{{ route('children.create') }}" class="btn btn-primary">Добавить анкету</a></h5></div>
 
@@ -32,7 +32,7 @@
                                 <tbody>
                                 @forelse ($childrens as $children)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $children->id }}</td>
                                         <td>{{ $children->recording_date }}</td>
                                         <td>
                                             <a href="{{ route('children.show', $children) }}">
@@ -71,6 +71,19 @@
                     <div class="card-footer justify-content-center text-center">
                         {{ $childrens->links() }}
                     </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    @forelse ($childrens as $children)
+                        @if(Carbon\Carbon::parse($children->certificate_date)->diffInDays(now()) < 7)
+                            <div class="alert alert-info">
+                                У ребенка №{{ $children->id }} истекает справка <a href="{{ route('children.show', $children) }}" class="btn btn-sm btn-info active">Просмотр</a>
+                            </div>
+                        @endif
+                    @empty
+
+                    @endforelse
                 </div>
             </div>
         </div>

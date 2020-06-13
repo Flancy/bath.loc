@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Trainer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Auth;
+
 use App\Models\Trainer;
 
 class TrainerController extends Controller
@@ -47,6 +49,8 @@ class TrainerController extends Controller
             return redirect()->route('trainer.index')
                 ->withErrors('Невозможно добавить тренера!');
         }
+
+        activity()->log('<div class="alert alert-info mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> добавил анкету тренера №' . $trainer->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
 
         return redirect()->route('trainer.index')
             ->withSuccess('Тренер успешно добавлен!');
@@ -99,6 +103,8 @@ class TrainerController extends Controller
                 ->withErrors('Невозможно обновить анкету тренера!');
         }
 
+        activity()->log('<div class="alert alert-warning mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> изменил анкету тренера №' . $trainer->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
+
         return redirect()->route('trainer.index')
             ->withSuccess('Анкета тренера успешно обновлена!');
     }
@@ -118,6 +124,8 @@ class TrainerController extends Controller
             return redirect()->route('trainer.index')
                 ->withErrors('Невозможно удалить тренера!');
         }
+
+        activity()->log('<div class="alert alert-danger mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> удалил анкету тренера №' . $trainer->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
 
         return redirect()->route('trainer.index')
             ->withSuccess('Тренер успешно удален!');

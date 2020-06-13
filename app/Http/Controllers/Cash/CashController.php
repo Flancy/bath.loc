@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
+use Auth;
 
 use App\Models\Cash;
 
@@ -60,6 +61,8 @@ class CashController extends Controller
                 ->withErrors('Невозможно добавить платежку!');
         }
 
+        activity()->log('<div class="alert alert-info mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> добавил платежку №' . $cash->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
+
         return redirect()->route('cash.index')
             ->withSuccess('Платежка успешно добавлена!');
     }
@@ -111,6 +114,8 @@ class CashController extends Controller
                 ->withErrors('Невозможно обновить платежку!');
         }
 
+        activity()->log('<div class="alert alert-warning mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> изменил платежку №' . $cash->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
+
         return redirect()->route('cash.index')
             ->withSuccess('Платежка успешно обновлен!');
     }
@@ -130,6 +135,8 @@ class CashController extends Controller
             return redirect()->route('cash.index')
                 ->withErrors('Невозможно удалить платежку!');
         }
+
+        activity()->log('<div class="alert alert-danger mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> удалил платежку №' . $cash->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
 
         return redirect()->route('cash.index')
             ->withSuccess('Платежка успешно удалена!');

@@ -31,7 +31,7 @@
                                 <tbody>
                                 @forelse ($shedulers as $shedule)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $shedule->id }}</td>
                                         <td>
                                             <a href="{{ route('children.show', $shedule->children) }}">
                                                 {{ $shedule->children->full_name }}

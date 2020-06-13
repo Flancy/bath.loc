@@ -30,7 +30,7 @@
                                 <tbody>
                                 @forelse ($trainers as $trainer)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $trainer->id }}</td>
                                         <td>
                                             <a href="{{ route('trainer.show', $trainer) }}">
                                                 {{ $trainer->full_name }}

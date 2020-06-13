@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Children;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Auth;
+
 use App\Models\Children;
 use App\Models\Trainer;
 
@@ -52,6 +54,8 @@ class ChildrenController extends Controller
             return redirect()->route('children.index')
                 ->withErrors('Невозможно добавить анкету!');
         }
+
+        activity()->log('<div class="alert alert-info mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> добавил анкету ребенка №' . $children->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
 
         return redirect()->route('children.index')
             ->withSuccess('Анкета успешно добавлена!');
@@ -106,6 +110,8 @@ class ChildrenController extends Controller
                 ->withErrors('Невозможно обновить анкету!');
         }
 
+        activity()->log('<div class="alert alert-warning mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> изменил анкету ребенка №' . $children->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
+
         return redirect()->route('children.index')
             ->withSuccess('Анкета успешно обновлена!');
     }
@@ -125,6 +131,8 @@ class ChildrenController extends Controller
             return redirect()->route('children.index')
                 ->withErrors('Невозможно удалить анкету!');
         }
+
+        activity()->log('<div class="alert alert-danger mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> удалил анкету ребенка №' . $children->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
 
         return redirect()->route('children.index')
             ->withSuccess('Анкета успешно удалена!');

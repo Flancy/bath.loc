@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "datatables.net-bs4": "^1.10.21",
-        "gijgo": "^1.9.13"
+        "gijgo": "^1.9.13",
+        "vue-cal": "^3.5.1"
     }
 }

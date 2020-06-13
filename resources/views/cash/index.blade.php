@@ -40,7 +40,7 @@
                                 <tbody>
                                 @forelse ($cashes as $cash)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $cash->id }}</td>
                                         <td>
                                             @if($cash->type_price === CashConstants::TYPE_PRICE_NON_CASH)
                                                 <span class="badge badge-secondary">{{ $cash->type_price }}</span>

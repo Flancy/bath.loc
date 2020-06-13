@@ -228,6 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'CashConstants' => App\Models\Cash::class,
+        'UserConstants' => App\User::class,
     ],
 
 ];

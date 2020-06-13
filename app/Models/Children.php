@@ -4,12 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Spatie\Activitylog\Traits\LogsActivity;
-
 class Children extends Model
 {
-    use LogsActivity;
-    
     protected $fillable = [
         'recording_date', 'full_name', 'birth_date', 'age', 'certificate_date', 'full_name_parents', 'phone_number_parents', 'address', 'payment_summ', 'payment_status', 'trainer_id'
     ];

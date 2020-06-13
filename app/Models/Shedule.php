@@ -4,12 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Spatie\Activitylog\Traits\LogsActivity;
-
 class Shedule extends Model
 {
-    use LogsActivity;
-    
     protected $fillable = [
     	'children_id', 'trainer_id', 'start_date', 'end_date', 'pay'
     ];

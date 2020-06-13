@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Shedule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Auth;
+
 use App\Models\Shedule;
 use App\Models\Children;
 use App\Models\Trainer;
@@ -55,6 +57,8 @@ class SheduleController extends Controller
             return redirect()->route('shedule.index')
                 ->withErrors('Невозможно добавить абонемент!');
         }
+
+        activity()->log('<div class="alert alert-info mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> добавил абонемент №' . $shedule->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
 
         return redirect()->route('shedule.index')
             ->withSuccess('Абонемент успешно добавлен!');
@@ -111,6 +115,8 @@ class SheduleController extends Controller
                 ->withErrors('Невозможно обновить абонемент!');
         }
 
+        activity()->log('<div class="alert alert-warning mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> изменил абонемент №' . $shedule->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
+
         return redirect()->route('shedule.index')
             ->withSuccess('Абонемент успешно обновлен!');
     }
@@ -130,6 +136,8 @@ class SheduleController extends Controller
             return redirect()->route('shedule.index')
                 ->withErrors('Невозможно удалить абонемент!');
         }
+
+        activity()->log('<div class="alert alert-danger mb-1">Пользователь <span class="badge badge-dark">' . Auth::user()->name . '</span> удалил абонемент №' . $shedule->id . '<span class="badge badge-secondary float-right">' . now(). '</span></div>');
 
         return redirect()->route('shedule.index')
             ->withSuccess('Абонемент успешно удален!');
