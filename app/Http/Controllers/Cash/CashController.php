@@ -27,12 +27,15 @@ class CashController extends Controller
 
         $cashes = Cash::whereDate('created_at', new Carbon($cash_date))->paginate(15);
 
+        $rank = $cashes->firstItem();
+
         return view('cash.index')->with([
             'cashes' => $cashes,
             'cash_date' => $cash_date,
             'total' => 0,
             'coming' => 0,
-            'expend' => 0
+            'expend' => 0,
+            'rank' => $rank
         ]);
     }
 

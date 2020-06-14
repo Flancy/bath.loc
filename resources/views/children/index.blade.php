@@ -3,7 +3,7 @@
 @section('content')
     <div class="container children-index">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header"><h5>Анкеты <a href="{{ route('children.create') }}" class="btn btn-primary">Добавить анкету</a></h5></div>
 
@@ -32,7 +32,7 @@
                                 <tbody>
                                 @forelse ($childrens as $children)
                                     <tr>
-                                        <td>{{ $children->id }}</td>
+                                        <td>{{ $rank++ }}</td>
                                         <td>{{ $children->recording_date }}</td>
                                         <td>
                                             <a href="{{ route('children.show', $children) }}">
@@ -41,21 +41,21 @@
                                         </td>
                                         <td>{{ $children->age }} лет</td>
                                         <td>
-                                            <a href="{{ route('trainer.show', $children->trainer) }}">
+                                            <a href="{{ route('trainer.show', $children->trainer_id) }}">
                                                 {{ $children->trainer->full_name }}
                                             </a>
                                         </td>
                                         <td class="td_last">
                                             <div class="button-group d-flex justify-content-between align-items-center">
-                                                <a href="{{ route('children.edit', $children) }}" class="btn btn-primary active">Изменить</a>
+                                                <a href="{{ route('children.edit', $children) }}" class="btn btn-sm btn-primary active">Изменить</a>
 
-                                                <a href="{{ route('children.show', $children) }}" class="btn btn-primary active">Просмотр</a>
+                                                <a href="{{ route('children.show', $children) }}" class="btn btn-sm btn-primary active">Просмотр</a>
 
                                                 <form action="{{ route('children.destroy', $children->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button type="submit" class="btn btn-danger active">Удалить</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger active">Удалить</button>
                                                 </form>
                                             </div>
                                         </td>
@@ -73,17 +73,22 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card">
-                    @forelse ($childrens as $children)
-                        @if(Carbon\Carbon::parse($children->certificate_date)->diffInDays(now()) < 7)
-                            <div class="alert alert-info">
-                                У ребенка №{{ $children->id }} истекает справка <a href="{{ route('children.show', $children) }}" class="btn btn-sm btn-info active">Просмотр</a>
-                            </div>
-                        @endif
-                    @empty
+                    <div class="card-header">
+                        <h5>Истекающие справки:</h5>
+                    </div>
+                    <div class="card-body">
+                        @forelse ($childrens as $children)
+                            @if(Carbon\Carbon::parse($children->certificate_date)->diffInDays(now()) < 7)
+                                <div class="alert alert-info">
+                                    У ребенка №{{ $children->id }} истекает справка <a href="{{ route('children.show', $children) }}" class="btn btn-sm btn-info active">Просмотр</a>
+                                </>
+                            @endif
+                        @empty
 
-                    @endforelse
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>

@@ -20,8 +20,11 @@ class TrainerController extends Controller
     {
         $trainers = Trainer::paginate(15);
 
+        $rank = $trainers->firstItem();
+
         return view('trainer.index')->with([
-            'trainers' => $trainers
+            'trainers' => $trainers,
+            'rank' => $rank
         ]);
     }
 
@@ -119,6 +122,8 @@ class TrainerController extends Controller
     {
         $trainer = Trainer::where('id', $id)->firstOrFail();
         $trainer->delete();
+
+      	Shedule::where('trainer_id', $id)->delete();
 
         if(!$trainer) {
             return redirect()->route('trainer.index')

@@ -40,7 +40,7 @@
                                 <a class="nav-link" href="{{ route('children.index') }}">{{ __('Анкеты') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('trainer.index') }}">{{ __('Тренера') }}</a>
+                                <a class="nav-link" href="{{ route('trainer.index') }}">{{ __('Тренеры') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('shedule.index') }}">{{ __('Абонементы') }}</a>

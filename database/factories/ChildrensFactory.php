@@ -15,8 +15,6 @@ $factory->define(Children::class, function (Faker $faker) {
         'full_name_parents' => 'Мама: ' . $faker->firstName . ' ' . $faker->lastName . '. Папа: ' . $faker->firstName . ' ' . $faker->lastName,
         'phone_number_parents' => 'Мама: ' . $faker->phoneNumber . '. Папа: ' . $faker->phoneNumber,
         'address' => $faker->city . ' ' . $faker->streetAddress,
-        'payment_summ' => $faker->randomNumber(3),
-        'payment_status' => 'Оплата полностью',
         'trainer_id' => $faker->numberBetween(1, 5)
     ];
 });

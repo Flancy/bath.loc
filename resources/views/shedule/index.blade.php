@@ -31,7 +31,7 @@
                                 <tbody>
                                 @forelse ($shedulers as $shedule)
                                     <tr>
-                                        <td>{{ $shedule->id }}</td>
+                                        <td>{{ $rank++ }}</td>
                                         <td>
                                             <a href="{{ route('children.show', $shedule->children) }}">
                                                 {{ $shedule->children->full_name }}
@@ -45,15 +45,15 @@
                                         <td>{{ $shedule->end_date }}</td>
                                         <td class="td_last">
                                             <div class="button-group d-flex justify-content-between align-items-center">
-                                                <a href="{{ route('shedule.edit', $shedule) }}" class="btn btn-primary active">Изменить</a>
+                                                <a href="{{ route('shedule.edit', $shedule) }}" class="btn btn-sm btn-primary active">Изменить</a>
 
-                                                <a href="{{ route('shedule.show', $shedule) }}" class="btn btn-primary active">Просмотр</a>
+                                                <a href="{{ route('shedule.show', $shedule) }}" class="btn btn-sm btn-primary active">Просмотр</a>
 
                                                 <form action="{{ route('shedule.destroy', $shedule->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button type="submit" class="btn btn-danger active">Удалить</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger active">Удалить</button>
                                                 </form>
                                             </div>
                                         </td>

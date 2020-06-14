@@ -9,6 +9,7 @@ use Auth;
 
 use App\Models\Children;
 use App\Models\Trainer;
+use App\Models\Shedule;
 
 class ChildrenController extends Controller
 {
@@ -21,8 +22,11 @@ class ChildrenController extends Controller
     {
         $childrens = Children::orderBy('recording_date', 'desc')->paginate(15);
 
+        $rank = $childrens->firstItem();
+
         return view('children.index')->with([
-            'childrens' => $childrens
+            'childrens' => $childrens,
+            'rank' => $rank
         ]);
     }
 
@@ -126,6 +130,8 @@ class ChildrenController extends Controller
     {
         $children = Children::where('id', $id)->firstOrFail();
         $children->delete();
+
+      	Shedule::where('children_id', $id)->delete();
 
         if(!$children) {
             return redirect()->route('children.index')

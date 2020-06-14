@@ -31,7 +31,7 @@
                                 <tbody>
                                     @forelse ($users as $user)
                                         <tr>
-                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $rank++ }}</td>
                                             <td>
                                                 @if($user->role === UserConstants::USER_ADMIN)
                                                     <span class="badge badge-success">{{ $user->role }}</span>
@@ -43,16 +43,16 @@
                                             <td>{{ $user->email }}</td>
                                             <td class="td_last">
                                                 <div class="button-group d-flex justify-content-between align-items-center">
-                                                    <a href="{{ route('user.edit', $user) }}" class="btn btn-primary active">Изменить</a>
+                                                    <a href="{{ route('user.edit', $user) }}" class="btn btn-sm btn-primary active">Изменить</a>
 
-                                                    <a href="{{ route('user.show', $user) }}" class="btn btn-primary active">Просмотр</a>
+                                                    <a href="{{ route('user.show', $user) }}" class="btn btn-sm btn-primary active">Просмотр</a>
 
                                                     @if($user->role === UserConstants::USER_MANAGER)
                                                         <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
 
-                                                            <button type="submit" class="btn btn-danger active">Удалить</button>
+                                                            <button type="submit" class="btn btn-sm btn-danger active">Удалить</button>
                                                         </form>
                                                     @endif
                                                 </div>

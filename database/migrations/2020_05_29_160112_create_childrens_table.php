@@ -25,9 +25,7 @@ class CreateChildrensTable extends Migration
             $table->string('full_name_parents');
             $table->string('phone_number_parents');
             $table->mediumText('address');
-            $table->integer('payment_summ');
-            $table->enum('payment_status', ['Оплата полностью', 'Оплата частично']);
-            
+
             $table->unsignedBigInteger('trainer_id');
 
             $table->foreign('trainer_id')->references('id')

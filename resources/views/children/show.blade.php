@@ -41,7 +41,7 @@
                                         <td>{{ $children->certificate_date }}</td>
                                     </tr>
                                     <tr>
-                                        <td><b>ФИО родилей ребенка</b></td>
+                                        <td><b>ФИО родителей ребенка</b></td>
                                         <td>{{ $children->full_name_parents }}</td>
                                     </tr>
                                     <tr>
@@ -51,14 +51,6 @@
                                     <tr>
                                         <td><b>Адрес</b></td>
                                         <td>{{ $children->address }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Сумма оплаты</b></td>
-                                        <td>{{ $children->payment_summ }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Статус оплаты</b></td>
-                                        <td>{{ $children->payment_status }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Тренер</b></td>

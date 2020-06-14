@@ -21,8 +21,11 @@ class UserController extends Controller
     {
         $users = User::paginate(15);
 
+        $rank = $users->firstItem();
+
         return view('user.index')->with([
             'users' => $users,
+            'rank' => $rank
         ]);
     }
 

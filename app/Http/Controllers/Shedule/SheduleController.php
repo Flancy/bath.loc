@@ -22,8 +22,11 @@ class SheduleController extends Controller
     {
         $shedulers = Shedule::paginate(15);
 
+        $rank = $shedulers->firstItem();
+
         return view('shedule.index')->with([
-            'shedulers' => $shedulers
+            'shedulers' => $shedulers,
+            'rank' => $rank
         ]);
     }
 

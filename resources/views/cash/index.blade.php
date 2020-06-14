@@ -40,7 +40,7 @@
                                 <tbody>
                                 @forelse ($cashes as $cash)
                                     <tr>
-                                        <td>{{ $cash->id }}</td>
+                                        <td>{{ $rank++ }}</td>
                                         <td>
                                             @if($cash->type_price === CashConstants::TYPE_PRICE_NON_CASH)
                                                 <span class="badge badge-secondary">{{ $cash->type_price }}</span>
@@ -68,15 +68,15 @@
                                         <td>{{ $cash->price }} ₽</td>
                                         <td class="td_last">
                                             <div class="button-group d-flex justify-content-between align-items-center">
-                                                <a href="{{ route('cash.edit', $cash) }}" class="btn btn-primary active">Изменить</a>
+                                                <a href="{{ route('cash.edit', $cash) }}" class="btn btn-sm btn-primary active">Изменить</a>
 
-                                                <a href="{{ route('cash.show', $cash) }}" class="btn btn-primary active">Просмотр</a>
+                                                <a href="{{ route('cash.show', $cash) }}" class="btn btn-sm btn-primary active">Просмотр</a>
 
                                                 <form action="{{ route('cash.destroy', $cash->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button type="submit" class="btn btn-danger active">Удалить</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger active">Удалить</button>
                                                 </form>
                                             </div>
                                         </td>

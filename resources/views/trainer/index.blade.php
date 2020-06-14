@@ -30,7 +30,7 @@
                                 <tbody>
                                 @forelse ($trainers as $trainer)
                                     <tr>
-                                        <td>{{ $trainer->id }}</td>
+                                        <td>{{ $rank++ }}</td>
                                         <td>
                                             <a href="{{ route('trainer.show', $trainer) }}">
                                                 {{ $trainer->full_name }}
@@ -39,15 +39,15 @@
                                         <td>{{ $trainer->phone_number }}</td>
                                         <td class="td_last">
                                             <div class="button-group d-flex justify-content-between align-items-center">
-                                                <a href="{{ route('trainer.edit', $trainer) }}" class="btn btn-primary active">Изменить</a>
+                                                <a href="{{ route('trainer.edit', $trainer) }}" class="btn btn-sm btn-primary active">Изменить</a>
 
-                                                <a href="{{ route('trainer.show', $trainer) }}" class="btn btn-primary active">Просмотр</a>
+                                                <a href="{{ route('trainer.show', $trainer) }}" class="btn btn-sm btn-primary active">Просмотр</a>
 
                                                 <form action="{{ route('trainer.destroy', $trainer->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button type="submit" class="btn btn-danger active">Удалить</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger active">Удалить</button>
                                                 </form>
                                             </div>
                                         </td>

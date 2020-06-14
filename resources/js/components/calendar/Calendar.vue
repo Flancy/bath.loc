@@ -21,42 +21,15 @@
                     const th = this
                     th.trainers = res.data
 
-                    for (let index = 1; index < 31; index++) {
+                    trainers.forEach(function (item, i) {
                         th.events.push({
-                            start: '2020-06-' + index,
-                            end: '2020-06-' + index,
-                            title: '<b>Тренер: ' + this.trainers[0].trainer.full_name + '</b>',
-                            content: 'Детей: ' + 1 + ' <br><i class="v-icon material-icons">pool</i>',
+                            start: '2020-06-' + i,
+                            end: '2020-07-31',
+                            title: '<b>Тренер: ' + item.trainer.full_name + '</b>',
+                            content: 'Детей: ' + random(1, 3) + ' <br><i class="v-icon material-icons">pool</i>',
                             class: 'leisure'
                         })
-                    }
-                    for (let index = 1; index < 31; index++) {
-                        th.events.push({
-                            start: '2020-06-' + index,
-                            end: '2020-06-' + index,
-                            title: '<b>Тренер: ' + this.trainers[1].trainer.full_name + '</b>',
-                            content: 'Детей: ' + 1 + ' <br><i class="v-icon material-icons">pool</i>',
-                            class: 'sport'
-                        })
-                    }
-                    for (let index = 1; index < 31; index++) {
-                        th.events.push({
-                            start: '2020-06-' + index,
-                            end: '2020-06-' + index,
-                            title: '<b>Тренер: ' + this.trainers[2].trainer.full_name + '</b>',
-                            content: 'Детей: ' + 2 + ' <br><i class="v-icon material-icons">pool</i>',
-                            class: 'leisure'
-                        })
-                    }
-                    for (let index = 1; index < 31; index++) {
-                        th.events.push({
-                            start: '2020-06-' + index,
-                            end: '2020-06-' + index,
-                            title: '<b>Тренер: ' + this.trainers[3].trainer.full_name + '</b>',
-                            content: 'Детей: ' + 1 + ' <br><i class="v-icon material-icons">pool</i>',
-                            class: 'sport'
-                        })
-                    }
+                    })
                 })
                 .catch(err => console.log(err))
         },

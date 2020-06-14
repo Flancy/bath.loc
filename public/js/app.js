@@ -1972,46 +1972,15 @@ __webpack_require__.r(__webpack_exports__);
     axios.get(window.location.origin + '/calendar/getShedule').then(function (res) {
       var th = _this;
       th.trainers = res.data;
-
-      for (var index = 1; index < 31; index++) {
+      trainers.forEach(function (item, i) {
         th.events.push({
-          start: '2020-06-' + index,
-          end: '2020-06-' + index,
-          title: '<b>Тренер: ' + _this.trainers[0].trainer.full_name + '</b>',
-          content: 'Детей: ' + 1 + ' <br><i class="v-icon material-icons">pool</i>',
+          start: '2020-06-' + i,
+          end: '2020-07-31',
+          title: '<b>Тренер: ' + item.trainer.full_name + '</b>',
+          content: 'Детей: ' + random(1, 3) + ' <br><i class="v-icon material-icons">pool</i>',
           "class": 'leisure'
         });
-      }
-
-      for (var _index = 1; _index < 31; _index++) {
-        th.events.push({
-          start: '2020-06-' + _index,
-          end: '2020-06-' + _index,
-          title: '<b>Тренер: ' + _this.trainers[1].trainer.full_name + '</b>',
-          content: 'Детей: ' + 1 + ' <br><i class="v-icon material-icons">pool</i>',
-          "class": 'sport'
-        });
-      }
-
-      for (var _index2 = 1; _index2 < 31; _index2++) {
-        th.events.push({
-          start: '2020-06-' + _index2,
-          end: '2020-06-' + _index2,
-          title: '<b>Тренер: ' + _this.trainers[2].trainer.full_name + '</b>',
-          content: 'Детей: ' + 2 + ' <br><i class="v-icon material-icons">pool</i>',
-          "class": 'leisure'
-        });
-      }
-
-      for (var _index3 = 1; _index3 < 31; _index3++) {
-        th.events.push({
-          start: '2020-06-' + _index3,
-          end: '2020-06-' + _index3,
-          title: '<b>Тренер: ' + _this.trainers[3].trainer.full_name + '</b>',
-          content: 'Детей: ' + 1 + ' <br><i class="v-icon material-icons">pool</i>',
-          "class": 'sport'
-        });
-      }
+      });
     })["catch"](function (err) {
       return console.log(err);
     });

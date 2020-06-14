@@ -41,7 +41,7 @@
                                     <input type="date" class="form-control" id="certificate_date" name="certificate_date" value="2020-07-25">
                                 </div>
                                 <div class="form-group">
-                                    <label for="full_name_parents">ФИО родилей ребенка <span class="tooltip-form" data-toggle="tooltip" data-html="true" title="В формате: <br><b>Отец: ФИО. Мать: ФИО">?</span></label>
+                                    <label for="full_name_parents">ФИО родителей ребенка <span class="tooltip-form" data-toggle="tooltip" data-html="true" title="В формате: <br><b>Отец: ФИО. Мать: ФИО">?</span></label>
                                     <textarea class="form-control" id="full_name_parents" name="full_name_parents">Мама: Kaya Haag. Папа: Lavinia Nienow</textarea>
                                 </div>
                             </div>
@@ -53,17 +53,6 @@
                                 <div class="form-group">
                                     <label for="address">Адрес</label>
                                     <textarea class="form-control" id="address" name="address">Irvingchester 418 Letitia Flats</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="payment_summ">Сумма оплаты</label>
-                                    <input type="number" class="form-control" id="payment_summ" name="payment_summ" value="1000">
-                                </div>
-                                <div class="form-group">
-                                    <label for="payment_status">Статус оплаты</label>
-                                    <select class="form-control" id="payment_status" name="payment_status">
-                                        <option value="Оплата полностью" selected="selected">Оплата полностью</option>
-                                        <option value="Оплата частично">Оплата частично</option>
-                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="trainer_id">Тренер</label>
