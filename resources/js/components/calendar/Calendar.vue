@@ -13,15 +13,49 @@
         components: { VueCal },
         data: () => ({
             trainers: null,
+            calendarEvent: [],
             events: []
         }),
         created() {
             axios.get(window.location.origin + '/calendar/getShedule')
                 .then(res => {
-                    const th = this
-                    th.trainers = res.data
+                    let th = this
 
-                    trainers.forEach(function (item, i) {
+                    this.trainers = res.data
+
+                    let map = this.trainers.reduce((r, i) => {
+                        r[i.trainer_id] = r[i.trainer_id] || [];
+                        r[i.trainer_id].push(i);
+                        return r;
+                    }, {});
+
+                    let arr1 = [];
+
+                    for (let key in map) {
+                        arr1.push(map[key]);
+                    }
+
+                    arr1.forEach(function (item, i) {
+                        let countChildren = item.length
+
+                        item.forEach(function (item, i) {
+                            let itemRow = item
+
+                            item.days.forEach(function (item) {
+                                let arrItem = item.split('-')
+
+                                th.events.push({
+                                    start: arrItem[2] + '-' + arrItem[1] + '-' + arrItem[0],
+                                    end: arrItem[2] + '-' + arrItem[1] + '-' + arrItem[0],
+                                    title: '<b>Тренер: ' + itemRow.trainer.full_name + '</b>',
+                                    content: 'Детей: ' + countChildren + ' <br><i class="v-icon material-icons">pool</i>',
+                                    class: 'leisure'
+                                })
+                            })
+                        });
+                    })
+
+                    /*trainers.forEach(function (item, i) {
                         th.events.push({
                             start: '2020-06-' + i,
                             end: '2020-07-31',
@@ -29,7 +63,7 @@
                             content: 'Детей: ' + random(1, 3) + ' <br><i class="v-icon material-icons">pool</i>',
                             class: 'leisure'
                         })
-                    })
+                    })*/
                 })
                 .catch(err => console.log(err))
         },

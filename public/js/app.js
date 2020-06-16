@@ -1963,6 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       trainers: null,
+      calendarEvent: [],
       events: []
     };
   },
@@ -1971,16 +1972,45 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get(window.location.origin + '/calendar/getShedule').then(function (res) {
       var th = _this;
-      th.trainers = res.data;
-      trainers.forEach(function (item, i) {
-        th.events.push({
-          start: '2020-06-' + i,
-          end: '2020-07-31',
-          title: '<b>Тренер: ' + item.trainer.full_name + '</b>',
-          content: 'Детей: ' + random(1, 3) + ' <br><i class="v-icon material-icons">pool</i>',
-          "class": 'leisure'
+      _this.trainers = res.data;
+
+      var map = _this.trainers.reduce(function (r, i) {
+        r[i.trainer_id] = r[i.trainer_id] || [];
+        r[i.trainer_id].push(i);
+        return r;
+      }, {});
+
+      var arr1 = [];
+
+      for (var key in map) {
+        arr1.push(map[key]);
+      }
+
+      arr1.forEach(function (item, i) {
+        var countChildren = item.length;
+        item.forEach(function (item, i) {
+          var itemRow = item;
+          item.days.forEach(function (item) {
+            var arrItem = item.split('-');
+            th.events.push({
+              start: arrItem[2] + '-' + arrItem[1] + '-' + arrItem[0],
+              end: arrItem[2] + '-' + arrItem[1] + '-' + arrItem[0],
+              title: '<b>Тренер: ' + itemRow.trainer.full_name + '</b>',
+              content: 'Детей: ' + countChildren + ' <br><i class="v-icon material-icons">pool</i>',
+              "class": 'leisure'
+            });
+          });
         });
       });
+      /*trainers.forEach(function (item, i) {
+          th.events.push({
+              start: '2020-06-' + i,
+              end: '2020-07-31',
+              title: '<b>Тренер: ' + item.trainer.full_name + '</b>',
+              content: 'Детей: ' + random(1, 3) + ' <br><i class="v-icon material-icons">pool</i>',
+              class: 'leisure'
+          })
+      })*/
     })["catch"](function (err) {
       return console.log(err);
     });
