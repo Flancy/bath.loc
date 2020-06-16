@@ -34,6 +34,7 @@
                                     <th>Тип</th>
                                     <th>Статус</th>
                                     <th>Сумма</th>
+                                    <th>Дата и время</th>
                                     <th>Действие</th>
                                 </tr>
                                 </thead>
@@ -66,6 +67,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $cash->price }} ₽</td>
+                                        <td>{{ $cash->created_at->format('H:i:s') }}</td>
                                         <td class="td_last">
                                             <div class="button-group d-flex justify-content-between align-items-center">
                                                 <a href="{{ route('cash.edit', $cash) }}" class="btn btn-sm btn-primary active">Изменить</a>

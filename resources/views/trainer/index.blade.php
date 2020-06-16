@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><h5>Тренера <a href="{{ route('trainer.create') }}" class="btn btn-primary">Добавить тренера</a></h5></div>
+                    <div class="card-header"><h5>Тренеры <a href="{{ route('trainer.create') }}" class="btn btn-primary">Добавить тренера</a></h5></div>
 
                     <div class="card-body">
                         @if (session('status'))

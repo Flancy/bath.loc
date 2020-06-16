@@ -18,6 +18,7 @@
       rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
@@ -108,10 +109,22 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.ru-ru.js" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
     <script>
+        $.fn.datepicker.dates['ru'] = {
+            days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
+            daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб", "Вск"],
+            daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+            months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+            monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+            today: "Сегодня",
+            weekStart: 1
+        };
+
         $(function () {
             $('#cash_date').datepicker({
-                locale: 'ru-ru',
+                language: 'ru',
                 uiLibrary: 'bootstrap4',
                 format: 'dd-mm-yyyy',
             })
@@ -123,6 +136,37 @@
                     window.location = window.location.origin + '/cash/?cash_date=' + $(this).val()
                 }
             });
+        })
+    </script>
+    
+    <script>
+        $.fn.datepicker.dates['ru'] = {
+            days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
+            daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб", "Вск"],
+            daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+            months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+            monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+            today: "Сегодня",
+            weekStart: 1
+        };
+
+        $('.date_shedule').datepicker({
+            isRTL: false,
+            language: 'ru',
+            multidate: true,
+            format: 'dd-mm-yyyy',
+        })
+
+        $('.date_shedule_disabled').datepicker({
+            isRTL: false,
+            language: 'ru',
+            enableOnReadonly: true,
+            ignoreReadonly : false,
+            multidate: true,
+            format: 'dd-mm-yyyy',
+            beforeShowDay: function() {
+                return false;
+            }
         })
     </script>
 </body>

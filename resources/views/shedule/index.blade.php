@@ -24,7 +24,6 @@
                                     <th>ID</th>
                                     <th>ФИО ребенка</th>
                                     <th>ФИО тренера</th>
-                                    <th>Дата окончания абонемена</th>
                                     <th>Действие</th>
                                 </tr>
                                 </thead>
@@ -42,7 +41,6 @@
                                                 {{ $shedule->trainer->full_name }}
                                             </a>
                                         </td>
-                                        <td>{{ $shedule->end_date }}</td>
                                         <td class="td_last">
                                             <div class="button-group d-flex justify-content-between align-items-center">
                                                 <a href="{{ route('shedule.edit', $shedule) }}" class="btn btn-sm btn-primary active">Изменить</a>

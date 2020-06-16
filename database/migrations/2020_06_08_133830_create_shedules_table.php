@@ -15,8 +15,7 @@ class CreateShedulesTable extends Migration
     {
         Schema::create('shedules', function (Blueprint $table) {
             $table->id();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->longText('days');
             $table->string('pay');
 
             $table->unsignedBigInteger('children_id');

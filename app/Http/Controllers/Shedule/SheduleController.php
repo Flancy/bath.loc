@@ -54,7 +54,12 @@ class SheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $shedule = Shedule::create($request->all());
+        $days = explode(",", $request->days);
+
+        $request_new = $request->all();
+        $request_new['days'] = $days;
+
+        $shedule = Shedule::create($request_new);
 
         if(!$shedule) {
             return redirect()->route('shedule.index')
@@ -111,7 +116,13 @@ class SheduleController extends Controller
     public function update(Request $request, $id)
     {
         $shedule = Shedule::where('id', $id)->firstOrFail();
-        $shedule->update($request->all());
+
+        $days = explode(",", $request->days);
+
+        $request_new = $request->all();
+        $request_new['days'] = $days;
+        
+        $shedule->update($request_new);
 
         if(!$shedule) {
             return redirect()->route('shedule.index')

@@ -43,12 +43,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="start_date">Начала абонемента</label>
-                                    <input type="date" class="form-control" id="start_date" name="start_date" value="2020-05-25">
-                                </div>
-                                <div class="form-group">
-                                    <label for="end_date">Окончание абонемента</label>
-                                    <input type="date" class="form-control" id="end_date" name="end_date" value="2020-06-25">
+                                    <label for="days">Дни абонемента</label>
+                                    <input type="text" class="form-control date_shedule" id="days" name="days">
                                 </div>
                             </div>
                             <div class="col-sm-12">

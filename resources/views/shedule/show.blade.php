@@ -29,12 +29,12 @@
                                         <td>{{ $shedule->trainer->full_name }}</td>
                                     </tr>
                                     <tr>
-                                        <td><b>Дата начала абонемента</b></td>
-                                        <td>{{ $shedule->start_date }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Дата окончания абогнемента</b></td>
-                                        <td>{{ $shedule->end_date }}</td>
+                                        <td><b>Даты записей</b></td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control date_shedule_disabled" id="days" name="days" value="{{ implode(',', $shedule->days) }}">
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><b>Оплата</b></td>

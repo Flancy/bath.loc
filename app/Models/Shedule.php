@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shedule extends Model
 {
     protected $fillable = [
-    	'children_id', 'trainer_id', 'start_date', 'end_date', 'pay'
+    	'children_id', 'trainer_id', 'days', 'pay'
     ];
 
     public function children()
@@ -19,4 +19,8 @@ class Shedule extends Model
     {
     	return $this->hasOne('App\Models\Trainer', 'id', 'trainer_id');
     }
+
+    protected $casts = [
+        'days' => 'array'
+    ];
 }
